@@ -1,8 +1,8 @@
 {
   "name": "react-with-parcel",
   "version": "1.0.0",
-  "description": "it is a simple basic react js project",
-  "main": "index.js",
+  "description": "basic project of react js",
+  "main": "App.js",
   "scripts": {
     "test": "jest"
   },
@@ -10,13 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/devRohitGangurde/Namaste-React-JS.git"
   },
-  "author": "Rohit",
+  "author": "Rohit Gangurde",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/devRohitGangurde/Namaste-React-JS/issues"
   },
   "homepage": "https://github.com/devRohitGangurde/Namaste-React-JS#readme",
   "devDependencies": {
-    "parcel": "^2.13.3"
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }
