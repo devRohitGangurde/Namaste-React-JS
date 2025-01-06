@@ -1,6 +1,6 @@
 .resto-card {
     width: 250px;
-    height: 300px;
+    height: 350px;
     border-radius: 15px;
     border: 1px solid black;
     background-color: gainsboro ;
@@ -17,3 +17,51 @@
 .resto-content{
  padding-left: 10px;   
 }
+/* App.css */
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .restaurant-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .restaurant-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .offer-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .restaurant-details {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .restaurant-cuisine,
+  .restaurant-location {
+    font-size: 13px;
+    color: #888;
+  }
+  

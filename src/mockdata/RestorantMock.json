@@ -4,6 +4,7 @@
     "name": "Big Burgers",
     "locality": "Koramangala",
     "areaName": "Koramangala",
+    "rating": 3,
     "imgUrl": "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/xl/D-PR00002503.jpg?ver=60.43"
   },
   {
@@ -11,6 +12,7 @@
     "name": "KFC",
     "locality": "Koramangala",
     "areaName": "Koramangala",
+    "rating": 3.4,
     "imgUrl": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/11/29/8f025221-d0e6-4b7a-bc4a-afab287c13c5_69634.jpg"
   },
   {
@@ -18,6 +20,7 @@
     "name": "Pizza hut",
     "locality": "Koramangala",
     "areaName": "Koramangala",
+    "rating": 4,
     "imgUrl": "https://api.pizzahut.io/v1/content/en-in/in-1/images/deal/my-box-pasta1.314a44269cb0dc883c29f65fbbb3a2f5.1.jpg"
   },
   {
@@ -25,6 +28,7 @@
     "name": "Dominios",
     "locality": "Koramangala",
     "areaName": "Koramangala",
+    "rating": 4.5,
     "imgUrl": "https://api.pizzahut.io/v1/content/en-in/in-1/images/deal/my-box-pasta1.314a44269cb0dc883c29f65fbbb3a2f5.1.jpg"
   }
 ]
