@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Header.css';
+import { Link } from 'react-router';
 
 export default  Header = () => {
      
@@ -13,10 +14,11 @@ export default  Header = () => {
             
             <div className="nav-menu">
                 <ul>
-                    <li>Home </li>
-                    <li>About us </li>
-                    <li>Contact us</li>
-                    <li>Cart</li>
+                    <Link className='link-style' to={'/instaMart'}>InstaMart </Link>
+                    <Link className='link-style' to={'/'}>Home </Link>
+                    <Link className='link-style' to={'/about'} >About us</Link>
+                    <Link className='link-style' to={'/contact'} >Contact us</Link>
+                    <Link className='link-style' to={'/about'} >Cart</Link>
                     <button className='login-btn' onClick={()=>{setBtnName("Logout")}}>{bntName}</button>
                 </ul>
 
