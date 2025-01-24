@@ -1,7 +1,7 @@
-.header-container {
+/* .header-container {
   display: flex;
-  align-items: center; /* Align items vertically */
-  justify-content: space-between; /* Space out items horizontally */
+  align-items: center;
+  justify-content: space-between;
   padding: 10px 20px;
   border: 1px solid black;
 }
@@ -11,8 +11,8 @@
 
 .search-bar {
   display: flex;
-  justify-content: space-between; /* Adjust spacing between elements */
-  align-items: center; /* Align items vertically */
+  justify-content: space-between; 
+  align-items: center; 
 }
 
 .nav-menu > ul {
@@ -35,3 +35,4 @@
 .link-style{
   padding: 10px;
 }
+*/
