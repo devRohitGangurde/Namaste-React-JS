@@ -17,7 +17,7 @@ const Footer = () => {
           <ul className="w-[150] mt-8 text-lg font-medium text-gray-500">
             <li className="mt-5 font-bold text-black">Company</li>
             <li className="mt-2">About Us</li>
-            <li className="mt-2">swiggy corporate</li>
+            <li className="mt-2">corporate</li>
             <li className="mt-2">Careers</li>
             <li className="mt-2">Team</li>
             <li className="mt-2">Swiggy One</li>
@@ -28,7 +28,8 @@ const Footer = () => {
        
           <ul className="w-[150] mt-8 text-lg font-medium text-gray-500">
             <li className="mt-5 font-bold text-black">Contact us</li>
-            <li className="mt-2">Help and support</li>
+            <li className="mt-2">Help</li>
+            <li className="mt-2">support</li>
             <li className="mt-2">Partner with us</li>
             <li className="mt-2">Ride with us</li>
           </ul>
@@ -39,7 +40,7 @@ const Footer = () => {
             <li className="mt-2">Pune</li>
             <li className="mt-2">Nashik</li>
           </ul>
-          <ul className="w-[150] mt-8 text-lg font-medium text-gray-500">
+          <ul className="w-[130] mt-8 text-lg font-medium text-gray-500">
             <li className="mt-5 font-bold text-black">Life at Swiggy</li>
             <li className="mt-2">Swiggy News</li>
           </ul>

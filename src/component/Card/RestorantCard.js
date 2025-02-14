@@ -1,7 +1,7 @@
 import React from "react";
 import "./RestorantCard.css";
 
-const RestorantCard = (props, index) => {
+const RestorantCard = (props) => {
   const { restroData } = props;
   return (
     <div className="pr-6 w-72">
@@ -13,6 +13,7 @@ const RestorantCard = (props, index) => {
           }
           alt={restroData?.info.name}
           className="w-full h-48 object-cover rounded-t-lg rounded-b-lg"
+          
         />
 
         <div className="h-15 absolute text-white font-bold text-lg px-4 py-2 rounded-b-lg w-full bottom-0 bg-gradient-to-t from-black to-transparent">
@@ -36,4 +37,14 @@ const RestorantCard = (props, index) => {
   );
 };
 
+export const withVegTitleHeading = (RestorantCard)=>{
+    return((props)=>{
+      return(
+        <div className="relative">
+        <label  className="absolute z-10 top-0 left-0 pr-2 pl-2 rounded-tl-sm bg-green-600 text-white">OPEN</label>
+        <RestorantCard {...props} />
+        </div>
+      )
+    })
+}
 export default RestorantCard;

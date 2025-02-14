@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import RestorantCard from "../Card/RestorantCard";
+import RestorantCard,{withVegTitleHeading} from "../Card/RestorantCard";
 import Shimmer from "../Shimmer";
 import { Link } from "react-router";
 import { getAllRestaurantAPI } from "../../utils/constants";
@@ -15,6 +15,8 @@ const RestaurantHome = () => {
 
   const [searchText, setSearchText] = useState();
   const [restroDataMain, setRestroDataMain] = useState();
+
+  const RestaurantVegTitleCard = withVegTitleHeading(RestorantCard)
 
   const isOnline = useInternetStatus();
   const scrollRef = useRef(null);
@@ -104,13 +106,15 @@ const RestaurantHome = () => {
             ref={scrollRef}
           >
             {restroData?.map((item) => {
+              console.log("Group Card",restroData)
               return (
                 <Link
                   style={{ color: "#000" }}
                   key={item?.info?.id}
                   to={"/restaurant/" + item?.info?.id}
                 >
-                  <RestorantCard restroData={item} />
+                  {item?.info?.isOpen ? <RestaurantVegTitleCard restroData={item}/>
+                 : <RestorantCard restroData={item} />}
                 </Link>
               );
             })}

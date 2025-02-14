@@ -1,74 +1,74 @@
-
 import { useParams } from "react-router";
 import useRestaurantMenu from "../../hooks/useRestaurantMenu";
-import './RestaurantsDetails.css'; // Import the CSS file
+import MenuCard from "../MenuCard";
+import RestaurantMenuCard from "../restaurantMenuCard/RestaurantMenuCard";
 
 const RestaurantsDetails = () => {
-  const {resId}= useParams();
-  const restroInfo = useRestaurantMenu(resId)
+  const { resId } = useParams();
+  const restroInfo = useRestaurantMenu(resId);
   const name = restroInfo?.cards[2]?.card?.card?.info?.name;
   const cuisines = restroInfo?.cards[2]?.card?.card?.info?.cuisines;
   const areaName = restroInfo?.cards[2]?.card?.card?.info?.areaName;
   const avgRating = restroInfo?.cards[2]?.card?.card?.info?.avgRating;
   const totalRatings = restroInfo?.cards[2]?.card?.card?.info?.totalRatings;
 
+  const categories =
+  restroInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    (c) =>
+      c.card?.["card"]?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
 
-  return(
-    <div className="restaurant-details-container">
-    {/* Breadcrumb */}
-    <div className="breadcrumb">
-      <span>Home / Nashik / </span>
-      <span className="breadcrumb-highlight">{name}</span>
-    </div>
 
-    {/* Restaurant Info Card */}
-    <div className="restaurant-card">
-      <h1 className="restaurant-name">{name}</h1>
-      <div className="restaurant-info">
-        <div className="restaurant-info-left">
-          <div className="restaurant-rating">
-            ⭐ <span>{avgRating}</span> <span className="rating-count">({totalRatings/1000}k ratings)</span>
-            <span className="separator">·</span> ₹400 for two
+  return (
+    <div className="max-w-3xl mx-auto p-5 font-sans">
+      <div className="text-xs text-gray-400 mb-4">
+        <span>Home / Nashik / </span>
+        <span className="font-bold text-gray-800">{name}</span>
+      </div>
+
+      {/* Restaurant Info Card */}
+      <div className="font-bold text-2xl my-6 ml-4">{name}</div>
+      <div className=" bg-white rounded-br-3xl  rounded-bl-[32] px-5 pt-0 pb-5 bg-gradient-to-t from-[#dddde5] to-transparent">
+        <div className="  border-black border bg-white rounded-2xl shadow-2xl p-5">
+          <div className="flex justify-between">
+            <div className="restaurant-info-left">
+              <div className="font-bold">
+                ⭐ <span>{avgRating}</span>{" "}
+                <span className="rating-count">
+                  ({totalRatings / 1000}k ratings)
+                </span>
+                <span className="separator">·</span> ₹400 for two
+              </div>
+              <div className="my-2">
+                <a href="/" className="text-orange-600 font-bold">
+                  {cuisines?.join(",")}
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="restaurant-cuisines">
-            <a href="/" className="cuisine-link">{cuisines?.join(',')}</a>
+          <div className="flex">
+            <div className="font-bold mr-5">Outlet</div>
+            <div className="outlet-location">{areaName}</div>
+          </div>
+          <div className="flex">
+            <span className="font-bold mt-2">25-30 mins</span>
           </div>
         </div>
-        <div className="restaurant-outlet">
-          <div className="outlet-title">Outlet</div>
-          <div className="outlet-location">{areaName}</div>
-        </div>
       </div>
-      <div className="restaurant-time">
-        <span>25-30 mins</span>
-      </div>
-    </div>
 
-    {/* Deals Section */}
-    <h2 className="deals-title">Deals for you</h2>
-    <div className="deals-container">
-      <div className="deal-card">
-        <div className="deal-icon">%</div>
-        <div>
-          <div className="deal-text">30% Off Upto ₹75</div>
-          <div className="deal-code">USE TRYNEW</div>
-        </div>
+      {/* MENU HEADER STARTED */}
+      <div className="font-light text-2xl my-6 ml-4 text-center">
+        {"⚜️ MENU ⚜️"}
       </div>
-      <div className="deal-card">
-        <div className="deal-icon">%</div>
-        <div>
-          <div className="deal-text">Flat ₹125 Off</div>
-          <div className="deal-code">USE FLATDEAL</div>
-        </div>
-      </div>
-    </div>
 
-    {/* Menu Button */}
-    <div className="menu-button-container">
-      <button className="menu-button">MENU</button>
+      {categories?.map((item)=>{
+        return(
+          <RestaurantMenuCard data={item?.card?.card}/>
+        )
+      })}
     </div>
-  </div>
-  )
+  );
 };
 
 export default RestaurantsDetails;
