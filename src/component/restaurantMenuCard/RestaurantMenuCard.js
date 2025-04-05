@@ -1,13 +1,9 @@
+import { useState } from "react"
 import ItemList from "../itemList/ItemList"
 
-export default  RestaurantMenuCard = ({data})=> {
-
-    const handleClick = ()=>{
-        alert("d")
-    }
+export default  RestaurantMenuCard = ({data,showItem,handleClick})=> {
     return(
         <div>
-      {/* Header */}
       <div className="h-5 bg-gray-200"></div>
       <div className=" mx-auto my-4 px-4 bg-white ">
         <div
@@ -20,7 +16,7 @@ export default  RestaurantMenuCard = ({data})=> {
           <span>⬇️</span>
         </div>
 
-        {<ItemList itemData={data?.itemCards}/>}
+        {showItem && <ItemList  itemData={data?.itemCards}/>}
       </div>
     </div>
     )

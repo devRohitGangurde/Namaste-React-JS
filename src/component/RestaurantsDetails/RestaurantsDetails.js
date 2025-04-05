@@ -2,6 +2,8 @@ import { useParams } from "react-router";
 import useRestaurantMenu from "../../hooks/useRestaurantMenu";
 import MenuCard from "../MenuCard";
 import RestaurantMenuCard from "../restaurantMenuCard/RestaurantMenuCard";
+import { useState } from "react";
+import Shimmer from "../Shimmer";
 
 const RestaurantsDetails = () => {
   const { resId } = useParams();
@@ -11,16 +13,16 @@ const RestaurantsDetails = () => {
   const areaName = restroInfo?.cards[2]?.card?.card?.info?.areaName;
   const avgRating = restroInfo?.cards[2]?.card?.card?.info?.avgRating;
   const totalRatings = restroInfo?.cards[2]?.card?.card?.info?.totalRatings;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const categories =
-  restroInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-    (c) =>
-      c.card?.["card"]?.["@type"] ===
-      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  );
+    restroInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.["card"]?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
-
-  return (
+  return restroInfo ? (
     <div className="max-w-3xl mx-auto p-5 font-sans">
       <div className="text-xs text-gray-400 mb-4">
         <span>Home / Nashik / </span>
@@ -62,12 +64,20 @@ const RestaurantsDetails = () => {
         {"⚜️ MENU ⚜️"}
       </div>
 
-      {categories?.map((item)=>{
-        return(
-          <RestaurantMenuCard data={item?.card?.card}/>
-        )
+      {categories?.map((item, index) => {
+        return (
+          <RestaurantMenuCard
+            data={item?.card?.card}
+            showItem={index === currentIndex ? true : false}
+            handleClick={() => {
+              setCurrentIndex(index);
+            }}
+          />
+        );
       })}
     </div>
+  ) : (
+    <Shimmer />
   );
 };
 

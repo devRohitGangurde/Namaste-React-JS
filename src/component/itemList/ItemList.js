@@ -5,11 +5,9 @@ const ItemList = ({ itemData }) => {
   return (
     <div>
       {itemData?.map((item) => {
-        console.log("DATA1", item?.card?.info?.ribbon || "f");
-
         return (
-          <>
-            <div className="flex justify-between py-5">
+          <div>
+            <div key={item?.card?.info?.imageId} className="flex justify-between py-5 items-center">
               <div>
                 <div className="flex">
                   {item?.card?.info?.isVeg && (
@@ -55,15 +53,21 @@ const ItemList = ({ itemData }) => {
                   {item?.card?.info?.description}
                 </div>
               </div>
-
+              <div className="relative">
               <img
                 src={MENU_IMAGE_BASE_URL + item?.card?.info?.imageId}
                 alt={item?.card?.info?.imageId}
                 className="w-[156] h-[144] object-fill rounded-t-lg rounded-b-lg"
               />
+              <div className=" bg-white border px-4 py-1 rounded-lg absolute bottom-0 right-0 text-center left-1/2 transform -translate-x-1/2">
+               <h1 className="text-x font-semibold text-green-600 align-middle ">
+                      {"ADD"}
+                    </h1>
+                    </div>
+                    </div>
             </div>
             <hr className="border-t border-gray-300 w-full" />
-          </>
+          </div>
         );
       })}
     </div>

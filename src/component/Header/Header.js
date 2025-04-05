@@ -3,9 +3,13 @@ import { Link } from "react-router";
 import swiggyLogo from "../../img/swiggy-logo.png";
 import dropdownArrow from "../../img/down-arrow.png";
 import { cardIconUrl, SEARCH_IMG_URL } from "../../utils/constants";
+import { useContext, useState } from "react";
+import UserContext from "../../utils/UserContext";
 
 
 export default Header = () => {
+
+  const {loggedInUser,setUserName}= useContext(UserContext)
 
   return (
     <header className="flex justify-between items-center px-4 bg-white shadow-md">
@@ -56,13 +60,13 @@ export default Header = () => {
             </div> 
           </li>
           <li>
-          <div className="flex">
+          <div className="flex" onClick={()=> setUserName("Rohit (Founder)")}>
           <img alt="cart-img" src={cardIconUrl} className="h-7 w-7 mr-2" />
             <Link
               to="/contact"
               className="hover:text-orange-500 transition duration-300"
             >
-             Sign In
+            {loggedInUser}
             </Link>
             </div>
           </li>
