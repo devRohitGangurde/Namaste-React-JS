@@ -13,11 +13,13 @@ import Error from "./component/Error";
 import { lazy } from "react";
 import { Outlet } from "react-router";
 import RestaurantsDetails from "./component/RestaurantsDetails/RestaurantsDetails";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import RestaurantHome from "./component/RestaurantHome/RestaurantHome";
 import Footer from "./component/footer/Footer";
 import UserContext from "./utils/UserContext";
 import Cart from "./component/cart/Cart";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
 
 const InstaMart = lazy(()=>import('./component/Instamart/InstaMart'))
 
@@ -29,6 +31,7 @@ const AppLayout = () => {
   },[])
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
     <div className="app-layout-container">
       <Header/>  
@@ -37,6 +40,7 @@ const AppLayout = () => {
       <Footer/>
     </div>
     </UserContext.Provider>
+    </Provider>
   )
 }
 

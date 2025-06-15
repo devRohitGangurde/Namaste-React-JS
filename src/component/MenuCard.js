@@ -3,7 +3,6 @@ import { MENU_IMAGE_BASE_URL } from "../utils/constants";
 
 const MenuCard = (props, index) => {
   const { menuData } = props;
-  console.log(menuData?.imageId)
   return (
     <div className="pr-6 w-[144]">
       <div>

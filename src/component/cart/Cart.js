@@ -1,99 +1,94 @@
-import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import emptyCart from "../assets/emptyCart.webp";
-// import { Link } from "react-router-dom";
-// import { addItems, removeItems, clearCart } from "../Utils/cartSlice";
-// import Success from "./Success";
-// import { RES_CARD_IMG_CDN_URL } from "../helpers/Constant";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCircle, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import OrderItem from "./OrderItem";
+import { clearCart } from "../../store/slice/CartSlice";
+import { toast, Bounce } from "react-toastify";
+import {
+  increaseQuantity,
+  decreaseQuantity,
+} from "../../store/slice/CartSlice";
 
 const Cart = () => {
-  //   const dispatch = useDispatch();
-  //   const cartDetails = useSelector((store) => store.cart.cartItems);
-  //   const locDetails = useSelector((store) => store.location.locationDetails);
-  //   const time = cartDetails[0]?.resDetailsData?.slaString;
-  //   const deliveryFee = (
-  //     cartDetails[0]?.resDetailsData?.deliveryFee / 100
-  //   ).toFixed(0);
-  //   const distance = cartDetails[0]?.resDetailsData?.lastMileTravelString;
-  //   const [area, setArea] = useState("");
-  //   const [cityName, setCityName] = useState("");
-  //   const [state, setState] = useState("");
-  //   const [suggestionText, setSuggestionText] = useState("");
-  //   const [isChecked, setIsChecked] = useState("");
-  //   const [confirmAddress, setConfirmAddress] = useState(false);
-  //   const [confirmPayment, setConfirmPayment] = useState(false);
-  //   const [orderSuccess, setOrderSuccess] = useState(false);
-  //   const handleConfirmAddress = () => {
-  //     setConfirmAddress(!confirmAddress);
-  //     setConfirmPayment(!confirmPayment);
-  //   };
-  //   const handleClearCart = () => {
-  //     setOrderSuccess(false);
-  //     dispatch(clearCart());
-  //   };
-  //   const handleIncreaseQuantity = (x) => {
-  //     dispatch(addItems(x));
-  //   };
-  //   const handleDecreaseQuantity = (x) => {
-  //     dispatch(removeItems(x));
-  //   };
-  //   useEffect(() => {
-  //     if (locDetails[0]) {
-  //       setArea(locDetails[0].area);
-  //       setCityName(locDetails[0].district);
-  //       setState(locDetails[0].state);
-  //     }
-  //   }, [locDetails]);
-  //   useEffect(() => {
-  //     window.scrollTo({
-  //       top: 0,
-  //       left: 0,
-  //       behavior: "smooth",
-  //     });
-  //   }, []);
-  //   useEffect(() => {
-  //     if (orderSuccess) {
-  //       const timeoutId = setTimeout(() => {
-  //         handleClearCart();
-  //       }, 2500);
-  //       return () => clearTimeout(timeoutId);
-  //     }
-  //   }, [orderSuccess]);
-  //   const itemTotal = cartDetails.reduce((accumulator, currentItem) => {
-  //     const itemPrice =
-  //       ((currentItem.price || currentItem.defaultPrice) / 100) *
-  //       currentItem.quantity;
-  //     return accumulator + itemPrice;
-  //   }, 0);
-  // console.log(distance);
+  const cartList = useSelector((state) => state.cart.items);
+
+  const dispatch = useDispatch();
+
+  const minusQty = (id) => {
+    dispatch(decreaseQuantity(id));
+  };
+
+  const plusQty = (id) => {
+    dispatch(increaseQuantity(id));
+  };
+
+  const onClearCart = () => {
+    dispatch(clearCart());
+
+    toast.success("Cart item cleared", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
+
+  const itemTotal = cartList.reduce((accumulator, currentItem) => {
+    const itemPrice =
+      (currentItem.price || currentItem.defaultPrice) * currentItem.quantity;
+    return accumulator + itemPrice;
+  }, 0);
+
   return (
-    <div
-      key={1}
-      className="flex items-center border-b border-gray-300 py-4"
-    >
-      <img
-        src={'https://fastly.picsum.photos/id/32/200/300.jpg?hmac=rNLw7Y7-RK2isGxXfSq90mzxSpKSXsRuOkvkGdEGK9c'}
-        alt={"name"}
-        className="w-20 h-20 rounded-full mr-4"
-      />
-      <div className="flex">
-        <h2 className="text-lg font-bold mx-4">{"Name"}</h2>
-        <div
-          className="bg-yellow-500 w-20 justify-between flex text-white text-base font-bold px-1 py-2 mx-4 rounded cursor-pointer border-none hover:bg-yellow-600"
-          data-testid="add-btn"
-        >
-          <button onClick={() => dispatch(removeItem(item))}>-</button>
-          <div>{1}</div>
-          <button onClick={() => dispatch(addItem(item))}>+</button>
-        </div>
-        <h3 className="text-base font-semibold">
-          Price: Rs.
-          {(1).toFixed(2) * 1}
-        </h3>
+    <>
+      <div className="flex items-center justify-center content-center p-5 flex-col">
+        <h2 className="text-xl font-bold">Cart Page</h2>
+        {cartList?.length !== 0 && (
+          <button
+            className="border border-gray-300 rounded px-2 mt-5"
+            onClick={onClearCart}
+          >
+            CLEAR CART
+          </button>
+        )}
       </div>
-    </div>
+
+      {/* <div className="flex items-center space-x-4 border-b pb-4 mb-4">
+          <img
+            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/RX_THUMBNAIL/IMAGES/VENDOR/2024/10/1/35217c67-8a64-45cf-a802-f2eb77bd23d6_966947.jpg"
+            alt="Pizza"
+            className="w-16 h-16 object-cover rounded"
+          />
+          <div>
+            <h2 className="text-xl font-bold">Pizza Hut</h2>
+            <p className="text-sm text-gray-600">Pathardi Phata</p>
+          </div>
+        </div> */}
+
+      {cartList?.length === 0 ? (
+        <h1 className="justify-center flex"> No cart item found </h1>
+      ) : (
+        cartList?.map((item) => {
+          return (
+            <div className="max-w-md mx-auto shadow-lg rounded-lg p-4 m-5">
+              {" "}
+              <OrderItem
+                name={item.name}
+                imageId={item.imageId}
+                quantity={item.quantity}
+                price={itemTotal}
+                minusQty={() => minusQty(item.id)}
+                plusQty={() => plusQty(item.id)}
+              />
+            </div>
+          );
+        })
+      )}
+    
+    </>
   );
 };
 

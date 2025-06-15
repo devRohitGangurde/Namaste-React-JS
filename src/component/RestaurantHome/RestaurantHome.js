@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useId } from "react";
 import RestorantCard,{withVegTitleHeading} from "../Card/RestorantCard";
 import Shimmer from "../Shimmer";
 import { Link } from "react-router";
@@ -21,6 +21,7 @@ const RestaurantHome = () => {
   const isOnline = useInternetStatus();
   const scrollRef = useRef(null);
   const scrollMenuRef = useRef(null);
+  const id = useId(); 
 
 
   useEffect(() => {
@@ -106,11 +107,10 @@ const RestaurantHome = () => {
             ref={scrollRef}
           >
             {restroData?.map((item) => {
-              console.log("Group Card",restroData)
               return (
                 <Link
                   style={{ color: "#000" }}
-                  key={item?.info?.id}
+                  key={id}
                   to={"/restaurant/" + item?.info?.id}
                 >
                   {item?.info?.isOpen ? <RestaurantVegTitleCard restroData={item}/>
