@@ -37,3 +37,6 @@ Started creating cart page. UI Only
 Babel- in transpiler- convert code from one to another language
 
 - @testing-library/jest-dom
+
+npm install --save-dev @babel/preset-env @babel/preset-react babel-jest
+- this library need to test UI componet 

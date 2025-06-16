@@ -1,7 +1,3 @@
-import React from "react";
-
-
-
 import React, { Component } from 'react'
 
 export class ContactUs extends Component {
@@ -20,6 +16,7 @@ export class ContactUs extends Component {
     return (
       <div>
         <h1>ContactUs</h1>
+        <button></button>
       </div>
     )
   }

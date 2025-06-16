@@ -7,6 +7,7 @@
 const config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
+  setupFilesAfterEnv: ['@testing-library/jest-dom'],
 
   // Stop running tests after `n` failures
   // bail: 0,
