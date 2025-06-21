@@ -40,3 +40,7 @@ Babel- in transpiler- convert code from one to another language
 
 npm install --save-dev @babel/preset-env @babel/preset-react babel-jest
 - this library need to test UI componet 
+
+- Deploy to Free Hosting Services
+- vercel
+- Netlify
