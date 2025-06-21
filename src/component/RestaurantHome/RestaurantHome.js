@@ -42,7 +42,6 @@ const RestaurantHome = () => {
     const menuData =
       jsonData?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info;
 
-    console.log(menuData);
 
     setMenuData(menuData);
   };
@@ -159,7 +158,7 @@ const RestaurantHome = () => {
                 <Link
                   style={{ color: "#000" }}
                   key={item?.info?.id}
-                  to={"/restaurant/" + item?.info?.id}
+                  // to={"/restaurant/" + item?.info?.id}
                 >
                   <MenuCard menuData={item} />
                 </Link>

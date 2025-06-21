@@ -6,13 +6,13 @@ import { toast, Bounce } from "react-toastify";
 
 const ItemList = ({ itemData }) => {
   const dispatch = useDispatch();
-
+  console.log(itemData)
   const onAddToCart = (item) => {
 
     const {info} = item?.card;
-
+   
     dispatch(
-      addItem({ id:info.id, price:info.price/100, name:info.name ,quantity:info.quantity, imageId:info.imageId })
+      addItem({ id:info.id, price:info.price/100||info.defaultPrice/100, name:info.name ,quantity:info.quantity, imageId:info.imageId })
     );
 
     toast.success("Item added in cart", {

@@ -10,6 +10,7 @@ import {
 const Cart = () => {
   const cartList = useSelector((state) => state.cart.items);
 
+
   const dispatch = useDispatch();
 
   const minusQty = (id) => {
@@ -40,6 +41,8 @@ const Cart = () => {
     const itemPrice =
       (currentItem.price || currentItem.defaultPrice) * currentItem.quantity;
     return accumulator + itemPrice;
+   
+
   }, 0);
 
   return (
